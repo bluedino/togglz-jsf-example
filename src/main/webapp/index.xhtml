@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<p:outputLabel value="Togglz JSF Example"></p:outputLabel>
+</h:head>
+
+<h:body>
+	<!--  if address feature is enabled -->
+	<h:panelGroup rendered="#{features['FEATURE_ADDRESS']}">
+		<p:dataTable value="#{customerBean.customers}"
+			var="customer">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="ID"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.id}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="First Name"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.firstName}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Last Name"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.lastName}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Street"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.address.street}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="City"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.address.city}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="State"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.address.state}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Zip"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.address.zipCode}"></h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:panelGroup>
+
+	<!--  if address feature is disabled -->
+	<h:panelGroup rendered="#{features['FEATURE_ADDRESS'] == false}">
+		<p:dataTable value="#{customerBean.customers}"
+			var="customer">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="ID"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.id}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="First Name"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.firstName}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Last Name"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{customer.lastName}"></h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:panelGroup>
+</h:body>
+</html>
